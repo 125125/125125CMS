@@ -15,7 +15,7 @@
         //if the user is not allowed, display a message and a link to go back to login page
 				echo '';
 			}else{
-				echo '<li><a href="/hellguard/logout.php">Logout</a></li>';
+				echo '<li><a href="/logout.php">Logout</a></li>';
 			}
 			?>
           </ul>
