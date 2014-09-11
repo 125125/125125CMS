@@ -25,8 +25,8 @@
         </div>
         <div class="sidecontent">
           <center>
-		<?php
-		if( !isset($_SESSION['username'])){ ?>
+			<?php
+			if( !isset($_SESSION['username'])){ ?>
 		  <form action="include/login.php" method="POST">
 			<input type="text" id="user" name="username" placeholder="Username" required /><br /><br />
 			<input type="password" id="pass" name="password" placeholder="Password" required /><br />
@@ -55,6 +55,7 @@
 			</table>
 			</div>
 		<?php } ?>
+			
           </center>
         </div>
 		<div class="sidetitle">
