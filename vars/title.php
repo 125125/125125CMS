@@ -1,5 +1,5 @@
 <?php
-$title = "HellguardWoW";
+$title = "Your Website Title";
 
 
 ?>
