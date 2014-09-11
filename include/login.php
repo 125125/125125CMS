@@ -1,5 +1,5 @@
 <?php
- session_start();
+session_start();
  require('../config/db_connect.php');
  include('../config/db_connect.php');
  
@@ -23,9 +23,10 @@ $count = mysql_num_rows($result);
 if ($count == 1){
 $_SESSION['username'] = $username;
 	echo "Hello, <b>" . $_SESSION['username'] . "</b>";
-	header('refresh: 5; ../?p=register');
+	header("Location: ../?p=index");
 }else{
-header("Location: ../?p=donate");
+	echo 'Wrong username/password !';
+header('refresh: 2; ../?p=index');
 }
 }
 ?>
