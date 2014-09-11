@@ -137,7 +137,7 @@ body {
 
 #container {
   width:1000px;
-  min-height:650px;
+  min-height:667px;
   background-color:#1f1c1b;
   border:1px solid black;
   border-radius:6px;
@@ -178,6 +178,10 @@ li {
   background-color:#0d0f0d;
   margin-bottom:4px;
   min-height:30px;
+  
+}
+.sidecontent b {
+  color:#5f4a29;
 }
 
 .sidecontent li {
