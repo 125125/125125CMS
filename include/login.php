@@ -21,9 +21,10 @@ $count = mysql_num_rows($result);
  
 if ($count == 1){
 $_SESSION['username'] = $username;
-header("Location: ../hellguard/?p=register");
+	echo "Hello, <b>" . $_SESSION['username'] . "</b>";
+	header('refresh: 5; ../?p=register');
 }else{
-header("Location: ../hellguard/?p=donate");
+header("Location: ../?p=donate");
 }
 }
 ?>
