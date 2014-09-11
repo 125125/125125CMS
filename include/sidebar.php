@@ -25,7 +25,7 @@
         </div>
         <div class="sidecontent">
           <center>
-		  <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+		  <form action="include/login.php" method="POST">
 			<input type="text" id="user" name="username" placeholder="Username" required /><br /><br />
 			<input type="password" id="pass" name="password" placeholder="Password" required /><br />
 			<input type="submit" id="submit" value="Login !" />
