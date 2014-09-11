@@ -11,7 +11,7 @@
             <li><a href="#">Armory</a></li>
             <li><a href="#">Recruit</a></li>
 			<?php
-			if( !isset($_SESSION['log']) || ($_SESSION['log'] != "in") ){
+			if( !isset($_SESSION['username'])){
         //if the user is not allowed, display a message and a link to go back to login page
 				echo '';
 			}else{
@@ -25,13 +25,16 @@
         </div>
         <div class="sidecontent">
           <center>
+		<?php
+		if( !isset($_SESSION['username'])){ ?>
 		  <form action="include/login.php" method="POST">
 			<input type="text" id="user" name="username" placeholder="Username" required /><br /><br />
 			<input type="password" id="pass" name="password" placeholder="Password" required /><br />
 			<input type="submit" id="submit" value="Login !" />
 		</form>
-	  
-	  
+		<?php }else{ 
+		echo "<font color='#3a3225'>Welcome,</font> <b>" . $_SESSION['username'] . "</b>" 
+		?>
 				<div class="userinfodiv">
 			<table border="1" class="userinfo">
 			<tr>
@@ -51,7 +54,7 @@
 			</tr>
 			</table>
 			</div>
-			
+		<?php } ?>
           </center>
         </div>
 		<div class="sidetitle">
