@@ -129,6 +129,9 @@ body {
   background-position: -778px -76px
 }
 
+/* ##################################################### */
+
+/* ##################################################### */
 #wrapper {
   width:1000px;
   min-height:500px;
@@ -137,7 +140,7 @@ body {
 
 #container {
   width:1000px;
-  min-height:667px;
+  overflow: auto;
   background-color:#1f1c1b;
   border:1px solid black;
   border-radius:6px;
@@ -148,8 +151,6 @@ body {
 aside {
   float:right;
   width:250px;
-  height:500px;
-
 }
 
 .sidetitle {
@@ -258,7 +259,6 @@ width:153px;
 }
 
 .message {
-  margin-bottom:4px;
   background-color:rgb(20, 20, 20);
   color:#3a3225;
   min-height:150px;
