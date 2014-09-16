@@ -8,3 +8,6 @@ Work in Progress !<br>
 <b>Nirelz</b> Some PhP Help<br>
 <b>Random Unknown Dude</b> For Background<br>
 <b>Me</b> For everything else
+
+Alright, Adding more credits to Nirelz because he blame me for not giving credits:
+3 images on the slider, JQuery Plugin for Slider, Login Script, a script named "Body.php" in the include folder. And the index script with 4 rows
