@@ -1,14 +1,12 @@
 <?php
-
-$page = $_GET['p'];
-
-if ($page == "")
-{
-    @include('pages/index.php');
+if(isset($_GET['p']) && !empty($_GET['p'])){
+	$page = $_GET['p'];	
+}
+else {
+	$page = "index";
 }
 
-switch($page)
-{    
+switch($page){    
     case "index":
         @include('pages/index.php');
         break;

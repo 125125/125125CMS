@@ -11,12 +11,12 @@
             <li><a href="?p=armory">Armory</a></li>
             <li><a href="?p=recruit">Recruit</a></li>
 			<?php
-			if( !isset($_SESSION['username'])){
+			if(!isset($_SESSION['username'])){
         //if the user is not allowed, display a message and a link to go back to login page
 				echo '';
 			}else{
 				echo '<li><a href="?p=ucp">User Panel</a></li>';
-				echo '<li><a href="/hellguard/logout.php">Logout</a></li>';
+				echo '<li><a href="logout.php">Logout</a></li>';
 				echo '<li><a href="?p=store">Store</a></li>';
 			}
 			?>

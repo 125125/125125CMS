@@ -1,4 +1,7 @@
 <?php
+//Refuse direct access
+if(!defined("125125CMS")){ exit; }
+
 $host = "localhost";
 $user = "root";
 $pass = "";
