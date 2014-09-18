@@ -1,6 +1,6 @@
 		</div>
 		<center><footer id="foot01"></footer></center>
-		<script src="JS/script.js"></script>
+		<script src="content/js/script.js"></script>
 	</div>
 </body>
 </html>
