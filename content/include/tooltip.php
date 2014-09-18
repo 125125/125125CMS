@@ -1,21 +1,19 @@
 <?php
-$con=mysqli_connect("127.0.0.1","root","","world");
-// Check connection
-if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-$name= mysqli_real_escape_string($con, $_GET['name']);
+$mysqli -> select_db("world");
 
-$result = mysqli_query($con,"SELECT * FROM item_template WHERE entry = '45472'");
+//commented because its doing nothing for now.
+//$name = $mysqli -> real_escape_string($_GET['name']);
+
+$result = $mysqli -> query("SELECT * FROM item_template WHERE entry = '45472'") or die("Failed to get item from DB");
 
 echo '<center>
 <div class="itemtooltip">
 <img src="http://wow-v.com/images/icons/INV_GAUNTLETS_85.png" width="64" height="64" border="0" class="icon">
 <div class="tooltip">
 <table width="265" border="0" cellpadding="0" cellspacing="1" valign="middle" align="center">
-  <tbody>';
+<tbody>';
 
-while($row = mysqli_fetch_array($result)) {
+while($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 $quality = $row['Quality'];
 $bonding = $row['bonding'];
 $unique = $row['maxcount'];
@@ -702,6 +700,4 @@ echo "</table>";
 echo "</div>";
 echo "</div>";
 echo "</center>";
-
-mysqli_close($con);
 ?>

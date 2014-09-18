@@ -10,8 +10,8 @@
 	  <li class="class8"><a href="?p=staff"><span>Staff Team</span></a></li>
 	</ul>
 </div>
-<center><img style="margin-top:170px;" src="images/hellguardwowlogotest2.png"></center>
+<center><img style="margin-top:170px;" src="content/images/hellguardwowlogotest2.png"></center>
 <div id="wrapper">
   <div id="container">
-	<?php include ('include/sidebar.php') ?>
+	<?php include ('content/include/sidebar.php') ?>
 	<div id="contentbox">

@@ -1,8 +1,8 @@
 <div id="news">
-        <div class="title">
-          <center>Downloads</center>
-        </div>
-        <div class="message">
+	<div class="title">
+		<center>Downloads</center>
+	</div>
+	<div class="message">
 		<center>
 			<table border="1" style="border: 1px solid #0d0f0d;">
 				<tr>
@@ -14,8 +14,7 @@
 				</tr>
 			</table>
 		</center>
-        <br>
-      </div>
-      </div>
-	  
+        <br />
+	</div>
+</div>	  
 </div>

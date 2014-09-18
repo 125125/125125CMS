@@ -1,6 +1,5 @@
 <?php 
 session_start();
-include_once('config/vars.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,9 +9,9 @@ include_once('config/vars.php');
 	<meta name="description" content="HellguardWoW">
 	<meta name="author" content="Tim Levinsson">
 	<title><?php echo $title ?></title>
-	<link rel="stylesheet" type="text/css" href="CSS/style.css">
-	<link rel="icon" type="image/png" href="images/favicon.ico">
-	<script type="text/javascript" src="JS/power.js"></script>
+	<link rel="stylesheet" type="text/css" href="content/css/style.css">
+	<link rel="icon" type="image/png" href="content/images/favicon.ico">
+	<script type="text/javascript" src="content/js/power.js"></script>
 	<script>
 		var wowhead_tooltips = { 
 		"colorlinks": true, 
