@@ -33,5 +33,16 @@ switch($page)
     case "register_success":
         @include('pages/register_success.php');
         break;
+    case "ucp":
+        @include('pages/ucp.php');
+        break;
+    case "store":
+        @include('pages/store.php');
+        break;
+    case "staff":
+        @include('pages/staff.php');
+        break;
+	default:
+		@include('pages/notfound.php');
 }
 ?>

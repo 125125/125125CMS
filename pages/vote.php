@@ -3,7 +3,30 @@
           <center>Vote</center>
         </div>
         <div class="message">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non augue eu tortor porttitor tempor nec sed dolor. Sed dui nulla, commodo eu pretium in, scelerisque quis dolor. In tempus justo id nulla dapibus interdum. Aenean a ante velit, nec rutrum arcu. Nullam mi nulla, consectetur ut gravida eget, ullamcorper nec magna. Proin sed mattis massa. Pellentesque neque mi, gravida id ornare vel, hendrerit et urna
+			<center>
+				<table width="500" id="votetable">
+					<tr>
+						<th class="left">Topsite</th>
+						<th class="right">Value</th>
+					</tr>
+					<tr>
+						<td class="left"><a href="#"><img src="test.png" alt="" height="51" width="88"></a></td>
+						<td class="right">10</td>
+					</tr>
+					<tr>
+						<td class="left"><a href="#"><img src="test.png" alt="" height="51" width="88"></a></td>
+						<td class="right">10</td>
+					</tr>
+					<tr>
+						<td class="left"><a href="#"><img src="test.png" alt="" height="51" width="88"></a></td>
+						<td class="right">10</td>
+					</tr>
+					<tr>
+						<td class="left"><a href="#"><img src="test.png" alt="" height="51" width="88"></a></td>
+						<td class="right">10</td>
+					</tr>
+				</table>
+			</center>
         <br>
       </div>
       </div>

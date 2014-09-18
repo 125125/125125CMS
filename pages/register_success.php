@@ -1,4 +1,4 @@
-<script>setTimeout('top.location = \'../?p=index\'', 3000);</script>
+<script>setTimeout('top.location = \'../hellguard/?p=index\'', 3000);</script>
 <div id="news">
         <div class="title">
           <center>Register</center>

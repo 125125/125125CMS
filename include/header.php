@@ -12,6 +12,14 @@
   <title><?php echo $title ?></title>
   <link rel="stylesheet" type="text/css" href="CSS/style.css">
   <link rel="icon" type="image/png" href="images/favicon.ico">
+  <script type="text/javascript" src="JS/power.js"></script>
+  <script>
+  var wowhead_tooltips = { 
+  "colorlinks": true, 
+  "iconizelinks": true, 
+  "renamelinks": true 
+  }
+  </script>
   <script type="text/javascript" src="./jquery/jquery-1.2.6.min.js"></script>
     <script type="text/javascript">
     function slideSwitch() {

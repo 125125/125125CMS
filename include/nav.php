@@ -6,10 +6,10 @@
   <li class="class5"><a href="?p=register"><span>Register</span></a></li>
   <li class="class6"><a href="?p=connect"><span>Connect</span></a></li>
   <li class="class7"><a href="?p=download"><span>Downloads</span></a></li>
-  <li class="class8"><a href="?p=armory"><span>Armory</span></a></li>
+  <li class="class8"><a href="?p=staff"><span>Staff Team</span></a></li>
 </ul>
 </div>
-<center><img style="margin-top:70px;" src="http://80.217.81.130/images/ServerNameLogo.png"></center>
+<center><img style="margin-top:170px;" src="../hellguard/images/hellguardwowlogotest2.png"></center>
 <div id="wrapper">
   <div id="container">
 <?php include ('include/sidebar.php') ?>
