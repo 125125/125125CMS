@@ -10,6 +10,9 @@ switch($page){
     case "index":
         include('content/pages/index.php');
         break;
+	case "logout":
+        include('logout.php');
+        break;
     case "vote":
         include('content/pages/vote.php');
         break;

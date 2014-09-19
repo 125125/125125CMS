@@ -4,8 +4,8 @@
 	</div>
 	<div class="message">
 		<center>
-			<form action="core/regi_db.php" method="post" autocomplete="off">
-			<input type="text" name="uname" placeholder="username" required="required" /><br />
+			<form action="" method="post" autocomplete="off">
+			<input type="text" name="uname" placeholder="Username" required="required" /><br />
 			<input type="password" name="pass" placeholder="Password" required="required" /><br />
 			<input type="password" name="pass2" placeholder="Verify Password" required="required" /><br />
 			<input type="email" name="email" placeholder="Email" required="required" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" /><br />
@@ -13,6 +13,9 @@
 			</form>
 		</center>
 		<br />
+		<?php
+		include "core/".$core."/regi_db.php";
+		?>
 	</div>
 </div>
 </div>

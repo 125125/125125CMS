@@ -1,16 +1,17 @@
 <?php 
 session_start();
+ob_start();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<meta charset="UTF-8">
 	<meta name="description" content="HellguardWoW">
 	<meta name="author" content="Tim Levinsson">
 	<title><?php echo $title ?></title>
 	<link rel="stylesheet" type="text/css" href="content/css/style.css">
 	<link rel="icon" type="image/png" href="content/images/favicon.ico">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript" src="content/js/power.js"></script>
 	<script>
 		var wowhead_tooltips = { 

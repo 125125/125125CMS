@@ -5,19 +5,19 @@
         </div>
 		<div class="sidecontent">
 			<ul>
-	            <li><a href="?p=vote">Vote</a></li>
-	            <li><a href="?p=donate">Donate</a></li>
-	            <li><a href="?p=download">Downloads</a></li>
-	            <li><a href="?p=armory">Armory</a></li>
-	            <li><a href="?p=recruit">Recruit</a></li>
 				<?php
 				if(!isset($_SESSION['username'])){
-	        		//if the user is not allowed, display a message and a link to go back to login page
-					echo '';
+	        		echo '<li><a href="?p=download">Downloads</a></li>';
+	            	echo '<li><a href="?p=armory">Armory</a></li>';
 				}
 				else{
+					echo '<li><a href="?p=download">Downloads</a></li>';
+	            	echo '<li><a href="?p=armory">Armory</a></li>';
+					echo '<li><a href="?p=vote">Vote</a></li>';
+	            	echo '<li><a href="?p=donate">Donate</a></li>';
+					echo '<li><a href="?p=recruit">Recruit</a></li>';
 					echo '<li><a href="?p=ucp">User Panel</a></li>';
-					echo '<li><a href="logout.php">Logout</a></li>';
+					echo '<li><a href="?p=logout">Logout</a></li>';
 					echo '<li><a href="?p=store">Store</a></li>';
 				}
 				?>
@@ -38,19 +38,23 @@
 			<center>
 				<?php
 				if( !isset($_SESSION['username'])){ ?>
-				 <form action="content/include/login.php" method="POST" autocomplete="off">
+				 <form action="" method="POST" autocomplete="off">
 					<input style="display:none">
 					<input type="password" style="display:none">
 					<input type="text" id="user" name="username" placeholder="Username" required /><br />
 					<input type="password" id="pass" name="password" placeholder="Password" required /><br />
 					<input type="submit" id="submit" value="Login !" />
 				</form>
-				<?php }
+				<?php 
+				include "content/include/login.php";
+				}
 				else{ 
 					echo "<font color='#3a3225'>Welcome,</font> <b>" . $_SESSION['username'] . "</b>" 
 					?>
 					<div class="userinfodiv">
-						<?php						 
+						<?php
+						$mysqli -> select_db($acc_db);
+												 
 						$result = $mysqli -> query("SELECT vp, dp FROM account WHERE username = '" . addslashes($_SESSION['username']) . "'");
 						$result2 = $mysqli -> query("SELECT gmlevel FROM account_access WHERE id =(SELECT id FROM account WHERE username = '" . addslashes($_SESSION['username']) . "');");
 						
@@ -135,7 +139,7 @@
 				<table class="userinfo" border="1">
 					<tr>
 					<?php
-					$mysqli -> select_db("characters");
+					$mysqli -> select_db($char_db);
 		
 					$result = $mysqli -> query("SELECT * FROM characters WHERE online > 0");
 					$num_rows = $result -> num_rows;
@@ -148,8 +152,6 @@
 						<th class="userinfo-th">Name</th>
 					</tr>
 					<?php
-					$mysqli -> select_db("characters");
-					
 					$result = $mysqli -> query("SELECT guid, name, level FROM characters WHERE online > 0");
 					
 					while($row = mysqli_fetch_array($result)) {
@@ -169,7 +171,7 @@
 			<div class="userinfodiv" id="scrolling">
 				<center><h4 style="color:#3a3225; margin:0;">Online/Offline Status</h4></center>
 				<?php
-				$mysqli -> select_db("auth");
+				$mysqli -> select_db($acc_db);
 				
 				$result = $mysqli -> query("SELECT * FROM realmlist WHERE id='1'");
 				
