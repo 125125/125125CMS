@@ -260,7 +260,7 @@ overflow:auto;
 }
 
 .indexmessage {
-  background-image:url(http://80.217.81.130/hellguard/images/postform.jpg);
+  background-image:url(../images/postform.jpg);
   color:#3a3225;
   width:100%;
   overflow:auto;
