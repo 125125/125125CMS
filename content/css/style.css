@@ -24,49 +24,8 @@ margin:0;
 padding:0;
 }
 
-.class1 {
-height:83px;
-width:121px;
-float:left;
-}
-
-.class2 {
-height:83px;
-width:121px;
-float:left;
-}
-
-.class3 {
-height:83px;
-width:121px;
-float:left;
-}
-
-.class4 {
-height:83px;
-width:121px;
-float:left;
-}
-
-.class5 {
-height:83px;
-width:121px;
-float:left;
-}
-
-.class6 {
-height:83px;
-width:121px;
-float:left;
-}
-
-.class7 {
-height:83px;
-width:121px;
-float:left;
-}
-
-.class8 {
+.class1,.class2,.class3,.class4,
+.class5,.class6,.class7,.class8 {
 height:83px;
 width:121px;
 float:left;
@@ -84,48 +43,17 @@ color:#594c37;
 font-family:Chaparral Pro;
 }
 
-#nav ul li a:hover,#nav ul li a.menu-active {
-background-image:url(../images/Nav.png);
-background-repeat:no-repeat;
-color:#7f6a59;
-}
-
 #nav ul li a span {
 padding-top:20px;
 display:block;
 position:relative;
 }
 
-#nav ul li.class1 a:hover {
-background-position:0 -83px;
-}
-
-#nav ul li.class2 a:hover {
-background-position:-121px -83px;
-}
-
-#nav ul li.class3 a:hover {
-background-position:-242px -83px;
-}
-
-#nav ul li.class4 a:hover {
-background-position:-363px -83px;
-}
-
-#nav ul li.class5 a:hover {
-background-position:-484px -83px;
-}
-
-#nav ul li.class6 a:hover {
-background-position:-602px -83px;
-}
-
-#nav ul li.class7 a:hover {
-background-position:-726px -83px;
-}
-
-#nav ul li.class8 a:hover {
-background-position:-847px -83px;
+#nav ul li a.menu-active, #nav ul li.class1 a:hover, #nav ul li.class2 a:hover, 
+#nav ul li.class3 a:hover, #nav ul li.class4 a:hover, #nav ul li.class5 a:hover, 
+#nav ul li.class6 a:hover, #nav ul li.class7 a:hover, #nav ul li.class8 a:hover{
+background: rgba(10,10,10,0.1);
+color:#7f6a59;
 }
 
 /* ##################################################### */
@@ -381,7 +309,8 @@ color:#513a31;
 opacity:1;
 }
 
-::-webkit-scrollbar-button,::-webkit-scrollbar-track-piece,::-webkit-scrollbar-thumb,::-webkit-scrollbar,::-webkit-scrollbar-corner,::-webkit-resizer {
+::-webkit-scrollbar-button,::-webkit-scrollbar-track-piece,::-webkit-scrollbar-thumb,
+::-webkit-scrollbar,::-webkit-scrollbar-corner,::-webkit-resizer {
 display:none;
 }
 
@@ -433,27 +362,15 @@ float:left;
   color:white;
 }
 
-.item-green {
+.item-green, .item-green a {
   color:#1FFF00;
 }
 
-.item-green a {
-  color:#1FFF00;
-}
-
-.item-yellow-set {
+.item-yellow-set, .item-yellow-set a {
   color:#FFCC00;
 }
 
-.item-yellow-set a {
-  color:#FFCC00;
-}
-
-.item-grey-set {
-  color:#666666;
-}
-
-.item-grey-set a {
+.item-grey-set, .item-grey-set a {
   color:#666666;
 }
 

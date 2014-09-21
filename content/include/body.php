@@ -16,6 +16,9 @@ switch($page){
     case "vote":
         include('content/pages/vote.php');
         break;
+	case "check_vote":
+        include('content/pages/vote/check_vote.php');
+        break;
     case "donate":
         include('content/pages/donate.php');
         break;

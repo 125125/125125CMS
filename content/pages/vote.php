@@ -23,7 +23,7 @@
 						
 					while ($row = $vote_links -> fetch_array(MYSQLI_ASSOC)) {
 						echo "<tr>
-						<td class='left'><a href='". $row['vote_link'] ."&user=". $_SESSION['username'] ."' target='_blank'><img src='". $row['vote_img'] ."' border='0' alt='". $row['name'] ."'></a></td>
+						<td class='left'><a href='". $row['vote_link'] ."&spb=". $_SESSION['username'] ."' target='_blank'><img src='". $row['vote_img'] ."' border='0' alt='". $row['name'] ."'></a></td>
 						<td class='right'>". $row['value'] ."</td>
 						</tr>";
 					}

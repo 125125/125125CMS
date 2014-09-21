@@ -1,24 +1,20 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
+//Refuse direct access
+if (!defined("125125CMS")) { exit; }
 
-$mysqli = new mysqli($host, $user, $pass);
+$account_name = "admin";
 
-$mysqli -> select_db("account_info");
+$mysqli -> select_db($acc_db);
 
-$account_name = $mysqli -> real_scape_string($_POST['user']);
-
-$voted = $mysqli -> query("SELECT voted FROM voted_cooldown WHERE account = '$account'");
-
-if(!$voted[0]){
-	$mysqli -> select_db("auth");
-	$mysqli -> query("UPDATE account SET vp = vp+10 WHERE username = '$account_name'");
-	echo "Points given!";
-}
-else{
-	echo "Already voted...";
-}
+$mysqli -> query("UPDATE account SET vp = vp+10 WHERE username = '$account_name'");
 
 $mysqli -> close();
 ?>
+<div class="title">
+	<center>Success!</center>
+</div>
+<div class="message">
+	<center>
+		<p>10 Points given!</p>
+	</center>
+</div>
