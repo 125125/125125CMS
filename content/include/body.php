@@ -16,9 +16,6 @@ switch($page){
     case "vote":
         include('content/pages/vote.php');
         break;
-	case "check_vote":
-        include('content/pages/vote/check_vote.php');
-        break;
     case "donate":
         include('content/pages/donate.php');
         break;
@@ -45,6 +42,9 @@ switch($page){
         break;
     case "staff":
         include('content/pages/staff.php');
+        break;
+	case "auctionhouse":
+        include('content/pages/auction_house.php');
         break;
 	default:
 		include('content/pages/notfound.php');
