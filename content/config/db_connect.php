@@ -2,11 +2,11 @@
 //Refuse direct access
 if(!defined("125125CMS")){ exit; }
 
-$host = "localhost";
-$user = "root";
-$pass = "";
+$hostname = "127.0.0.1";
+$dbusername = "root";
+$dbpassword = "";
 
-$mysqli = new mysqli($host, $user, $pass);
+$mysqli = new mysqli($hostname, $dbusername, $dbpassword);
 if (!$mysqli){
     die("Database Connection Failed" . $mysqli -> error);
 }

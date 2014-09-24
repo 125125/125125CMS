@@ -9,8 +9,8 @@
 					<th colspan="2" style="text-align:center;">Custom Patch</th>
 				</tr>
 				<tr>
-					<th><img src="../125125CMS/content/images/download.png"</th>
-					<td><a href="../downloads/patch-A.mpq">Patch-A.MPQ</a></td>
+					<th><img src="content/images/download.png"</th>
+					<td><a href="downloads/patch-A.mpq">Patch-A.MPQ</a></td>
 				</tr>
 			</table>
 		</center>

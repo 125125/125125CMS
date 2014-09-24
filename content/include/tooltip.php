@@ -1,5 +1,5 @@
 <?php
-$mysqli -> select_db("world");
+$mysqli -> select_db($world_db);
 
 //commented because its doing nothing for now.
 //$name = $mysqli -> real_escape_string($_GET['name']);

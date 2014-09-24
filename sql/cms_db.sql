@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `info` (
   `acc_db` varchar(50) NOT NULL DEFAULT 'auth',
   `char_db` varchar(50) NOT NULL DEFAULT 'characters',
   `world_db` varchar(50) DEFAULT 'world',
+  `style` varchar(50) DEFAULT 'default',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

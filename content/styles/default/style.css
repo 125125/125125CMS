@@ -1,5 +1,5 @@
 body {
-background-image:url(../images/catabg.jpg);
+background-image:url(../../images/catabg.jpg);
 background-repeat:no-repeat;
 background-size:cover;
 background-attachment:fixed;
@@ -16,7 +16,7 @@ margin:auto;
 #nav ul {
 position:absolute;
 list-style:none;
-background-image:url(../images/Nav.png);
+background-image:url(../../images/Nav.png);
 background-repeat:no-repeat;
 width:970px;
 height:83px;
@@ -81,7 +81,7 @@ width:250px;
 }
 
 .sidetitle {
-background-image:url(../images/sidebar-title2.jpg);
+background-image:url(../../images/sidebar-title2.jpg);
 background-repeat:repeat-x;
 font-size:20px;
 line-height:35px;
@@ -169,7 +169,7 @@ background-size:cover;
 }
 
 .title {
-background-image:url(../images/sidebar-title2.jpg);
+background-image:url(../../images/sidebar-title2.jpg);
 background-repeat:repeat-x;
 border-radius:8px 8px 0 0;
 margin-top:5px;
@@ -188,7 +188,7 @@ overflow:auto;
 }
 
 .indexmessage {
-  background-image:url(../images/postform.jpg);
+  background-image:url(../../images/postform.jpg);
   color:#3a3225;
   width:100%;
   overflow:auto;
@@ -208,7 +208,7 @@ overflow:auto;
 .avatar {
   width:100px;
   height:100px;
-  background-image:url(../images/NoAvatar.jpg);
+  background-image:url(../../images/NoAvatar.jpg);
   margin-left:25px;
   border:2px solid #3a3225;
   border-radius:5px;

@@ -12,5 +12,6 @@ while ($row = $web_info -> fetch_array(MYSQLI_ASSOC)){
 	$acc_db = $row['acc_db'];
 	$char_db = $row['char_db'];
 	$world_db = $row['world_db'];
+	$style = $row['style'];
 }
 ?>

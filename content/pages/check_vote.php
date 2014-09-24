@@ -1,90 +1,93 @@
 <?php
-//falta fazer check de quem manda a variavel, e atribuir o voted_link consoante isso.
-
 define("125125CMS", "WOWCMS");
 
-session_start();
+include_once "../config/db_connect.php";
+include_once "../config/vars.php";
 
-include_once "../config/db_connect.php ";
-include_once "../config/vars.php ";
-
-$accepted_servers = array('openwow' => "http://www.openwow.com/",
-						'xtremetop100' => "http://xtremetop100.com/",
-						'top100arena' => "http://www.top100arena.com/",
-						'arenatop100' => "http://www.arena-top100.com/");
-
-if (isset($_SESSION['username']) AND !empty($_SESSION['username']) AND isset($_SERVER['HTTP_REFERER'])){
+//arenatop100 needs to be added
+//List of servers accepted to vote
+$accepted_servers = array('openwow' => "159.253.128.82", //works 159.253.128.82
+						'topg' => "192.99.101.31", //works 192.99.101.31
+						'top100arena' => "209.59.143.11"); //works 209.59.143.11
 	
-	if (in_array($_SERVER['HTTP_REFERER'], $accepted_servers)){
+if (in_array($_SERVER['REMOTE_ADDR'],$accepted_servers)){
 		
-		foreach ($accepted_servers as $key => $value) {
-			if ($_SERVER['HTTP_REFERER'] == $value){
-				$server = $key;
-				break;
-			}
+	//Retrieve the name of the voted server
+	foreach ($accepted_servers as $key => $value) {
+		if ($_SERVER['REMOTE_ADDR'] == $value){
+			$server = $key;
+			break;
 		}
-		
-		if ($_SERVER['REQUEST_METHOD'] === "POST"){
-			$user = $_POST['user'];
-		}
-		elseif($_SERVER['REQUEST_METHOD'] === "GET"){
-			$user = $_GET['user'];
-		}
-		else{
-			echo 'Sorry but you can`t do that.';
-			exit;
-		}
+	}
 	
-		date_default_timezone_set(date_default_timezone_get());
-		
-		$mysqli -> select_db("wow_cms");
-		
-		$last_time = $mysqli -> query("SELECT * FROM voted_cooldown WHERE username = '$user'");
-		
-		$now = date("Y/m/d H:i:s", time());
-		
-		if ($last_time -> num_rows == 0){
-			$mysqli -> query("INSERT INTO voted_cooldown (username,voted_link,voted_time) VALUES('".$_SESSION['username']."','$server','$now')");
-			$mysqli -> select_db($acc_db);
-			$mysqli -> query("UPDATE account SET vp = vp+10 WHERE username = '$user'");
-			$mysqli -> close();
-			echo "success!";
+	//Retrieve the variable from the callback	
+	if ($_SERVER['REQUEST_METHOD'] === "POST"){
+		foreach ($_POST as $name => $val){
+     		$user_id = $val;
 		}
-		else{
-			while($row = $last_time -> fetch_array(MYSQLI_ASSOC)){
-				$last_time_voted = date("Y/m/d H:i:s", strtotime($row['voted_time']));
-				$id = $row['id'];
-			}
-			
-			$can_vote = date("Y/m/d H:i:s",strtotime("+12 Hours", strtotime($last_time_voted)));
-			
-			$time_to_vote = date("H:i:s",strtotime($can_vote) - strtotime($now));
-			
-			//echo "Now: ". $now ."<p/>";
-			//echo "Last time: ". $last_time_voted ."<p/>";
-			//echo "Can Vote: ". $can_vote ."<p/>";
-			//echo "Try to vote in: ". $time_to_vote ." hours<p/>";
-			
-			//Debug to vote
-			//$can_vote = $now;
-			
-			if ($now >= $can_vote){
-				$mysqli -> query("UPDATE voted_cooldown SET voted_time = '$now' WHERE id = '$id'");
-				$mysqli -> select_db($acc_db);
-				$mysqli -> query("UPDATE account SET vp = vp+10 WHERE username = '$user'");
-				$mysqli -> close();
-				echo "success!";
-			}
-			else {
-				echo 'Sorry but you cannot vote yet';
-			}
+	}
+	elseif($_SERVER['REQUEST_METHOD'] === "GET"){
+		foreach ($_GET as $name => $val){
+     		$user_id = $val;
 		}
 	}
 	else{
-		echo "Your not allowed here...";
+		echo 'Sorry but you can`t do that.';
+		exit;
+	}
+	
+	//Transform Account ID in Account Username
+	if (is_numeric($user_id)){
+		$mysqli -> select_db($acc_db);
+		$account_name = $mysqli -> query("SELECT username FROM account WHERE id = '$user_id'");
+		while ($row = $account_name -> fetch_array(MYSQLI_ASSOC)) {
+			$user_id = $row['username'];
+		}
+	}
+	
+	//Sets the timezone to the server timezone location
+	date_default_timezone_set(date_default_timezone_get());
+		
+	$mysqli -> select_db("s003028_wow_cms");	
+	$last_time = $mysqli -> query("SELECT * FROM voted_cooldown WHERE username = '$user_id' AND vote_link = '$server'");	
+	$now = date("Y/m/d H:i:s", time());
+		
+	if ($last_time -> num_rows == 0){
+		$mysqli -> query("INSERT INTO voted_cooldown (username,voted_link,voted_time) VALUES('$user_id','$server','$now')");
+		$mysqli -> select_db($acc_db);
+		$mysqli -> query("UPDATE account SET vp = vp+10 WHERE username = '$user_id'");
+		echo "Success!";
+	}
+	else{
+		while($row = $last_time -> fetch_array(MYSQLI_ASSOC)){
+			$last_time_voted = date("Y/m/d H:i:s", strtotime($row['voted_time']));
+			$id = $row['id'];
+		}
+			
+		$can_vote = date("Y/m/d H:i:s",strtotime("+12 Hours", strtotime($last_time_voted)));	
+		$time_to_vote_again = date("H:i:s",strtotime($can_vote) - strtotime($now));
+			
+		//Debug to vote again
+		//$can_vote = $now;
+			
+		if ($now >= $can_vote){
+			$mysqli -> query("UPDATE voted_cooldown SET voted_time = '$now' WHERE id = '$id' AND voted_link = '$server'");
+			$mysqli -> select_db($acc_db);
+			$mysqli -> query("UPDATE account SET vp = vp+10 WHERE username = '$user_id'");
+			echo "Success!";
+		}
+		else {
+			echo 'Sorry but you can`t vote yet';
+		}
 	}
 }
 else{
+	//Debug to get address from server
+	// $now = date("Y/m/d H:i:s", time());
+	// $user_id = "debug";
+	// $mysqli -> select_db("wow_cms");
+	// $mysqli -> query("INSERT INTO voted_cooldown (username,voted_link,voted_time) VALUES('$user_id','".$_SERVER['REMOTE_ADDR']."','$now')");
 	echo "Your not allowed here...";
 }
+$mysqli -> close();
 ?>

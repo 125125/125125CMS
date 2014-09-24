@@ -12,7 +12,7 @@
 		<div class="message">
 			<center>
 				<?php
-				$mysqli -> select_db("auth");
+				$mysqli -> select_db($acc_db);
 				 
 				$result = $mysqli -> query("SELECT username, email, vp, dp FROM account WHERE username = '" . addslashes($_SESSION['username']) . "'");
 				$result2 = $mysqli -> query("SELECT gmlevel FROM account_access WHERE id =(SELECT id FROM account WHERE username = '" . addslashes($_SESSION['username']) . "');");
