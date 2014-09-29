@@ -4,12 +4,12 @@ define("125125CMS", "WOWCMS");
 include_once "../config/db_connect.php";
 include_once "../config/vars.php";
 
-//arenatop100 needs to be added
 //List of servers accepted to vote
 $accepted_servers = array('openwow' => "159.253.128.82", //works 159.253.128.82
 						'topg' => "192.99.101.31", //works 192.99.101.31
-						'top100arena' => "209.59.143.11"); //works 209.59.143.11
-	
+						'top100arena' => "209.59.143.11", //works 209.59.143.11
+						'arenatop100' => "198.20.70.235"); //works 198.20.70.235
+						
 if (in_array($_SERVER['REMOTE_ADDR'],$accepted_servers)){
 		
 	//Retrieve the name of the voted server
@@ -48,20 +48,26 @@ if (in_array($_SERVER['REMOTE_ADDR'],$accepted_servers)){
 	//Sets the timezone to the server timezone location
 	date_default_timezone_set(date_default_timezone_get());
 		
-	$mysqli -> select_db("s003028_wow_cms");	
-	$last_time = $mysqli -> query("SELECT * FROM voted_cooldown WHERE username = '$user_id' AND vote_link = '$server'");	
+	$mysqli -> select_db("wow_cms");
+	
+	//Gets how many votepoints for the vote link
+	$points_check = $mysqli -> query("SELECT * FROM vote_links WHERE name = '$server'");
+	while($row = $points_check -> fetch_array(MYSQLI_ASSOC)){
+		$points = $row['value'];
+	}
+		
+	$last_time = $mysqli -> query("SELECT * FROM voted_cooldown WHERE username = '$user_id' AND voted_link = '$server'");	
 	$now = date("Y/m/d H:i:s", time());
 		
 	if ($last_time -> num_rows == 0){
 		$mysqli -> query("INSERT INTO voted_cooldown (username,voted_link,voted_time) VALUES('$user_id','$server','$now')");
 		$mysqli -> select_db($acc_db);
-		$mysqli -> query("UPDATE account SET vp = vp+10 WHERE username = '$user_id'");
+		$mysqli -> query("UPDATE account SET vp = vp+$points WHERE username = '$user_id'");
 		echo "Success!";
 	}
 	else{
 		while($row = $last_time -> fetch_array(MYSQLI_ASSOC)){
 			$last_time_voted = date("Y/m/d H:i:s", strtotime($row['voted_time']));
-			$id = $row['id'];
 		}
 			
 		$can_vote = date("Y/m/d H:i:s",strtotime("+12 Hours", strtotime($last_time_voted)));	
@@ -71,9 +77,9 @@ if (in_array($_SERVER['REMOTE_ADDR'],$accepted_servers)){
 		//$can_vote = $now;
 			
 		if ($now >= $can_vote){
-			$mysqli -> query("UPDATE voted_cooldown SET voted_time = '$now' WHERE id = '$id' AND voted_link = '$server'");
+			$mysqli -> query("UPDATE voted_cooldown SET voted_time = '$now' WHERE username = '$user_id' AND voted_link = '$server'");
 			$mysqli -> select_db($acc_db);
-			$mysqli -> query("UPDATE account SET vp = vp+10 WHERE username = '$user_id'");
+			$mysqli -> query("UPDATE account SET vp = vp+$points WHERE username = '$user_id'");
 			echo "Success!";
 		}
 		else {
@@ -83,10 +89,10 @@ if (in_array($_SERVER['REMOTE_ADDR'],$accepted_servers)){
 }
 else{
 	//Debug to get address from server
-	// $now = date("Y/m/d H:i:s", time());
-	// $user_id = "debug";
-	// $mysqli -> select_db("wow_cms");
-	// $mysqli -> query("INSERT INTO voted_cooldown (username,voted_link,voted_time) VALUES('$user_id','".$_SERVER['REMOTE_ADDR']."','$now')");
+	$now = date("Y/m/d H:i:s", time());
+	$user_id = "debug";
+	$mysqli -> select_db("wow_cms");
+	$mysqli -> query("INSERT INTO voted_cooldown (username,voted_link,voted_time) VALUES('$user_id','".$_SERVER['REMOTE_ADDR']."','$now')");
 	echo "Your not allowed here...";
 }
 $mysqli -> close();
